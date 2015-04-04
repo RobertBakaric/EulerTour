@@ -1,0 +1,99 @@
+EulerTour version 1.0
+=======================
+
+FULL NAME:
+
+Euler Tour Tree Representation 
+
+
+
+
+
+DESCRIPTION:
+
+The Euler tour tree representation is a program for representing trees (including subtrees) as euler circuts of directed graphs produced by converting a tree (undirected graph) into a directed graph. The procedure is achieved by replacing each undirected edge in a tree with two directed ones. As a result a list of vertices is computed as they are visited during the traversal of one such graph.
+
+
+
+
+
+SYNOPSIS:
+
+    #include<vector>
+    #include<EulerTour.hpp>
+
+    vector<int|long|unsigned|double> parent {0,1,1,2,1,2,3,4,6,3,2,67,67};    
+    vector<int|long|unsigned|double> child  {1,2,4,8,5,67,6,14,15,68,3,11,17};
+
+/* Make Graph */
+
+    /* Construction */
+    Graph<int|long|unsigned|double> graph(parent,child);
+    /*  OR  */
+    Graph<int|long|unsigned|double> graph;
+    graph.make(parent,child);
+
+/*  Make ET  */
+
+    /* Construction */
+    EulerTour<int|long|unsigned|double> et(0,parent,child);
+    /*  OR  */
+    EulerTour<int|long|unsigned|double> et(parent,child);
+    /*  OR  */
+    EulerTour<int|long|unsigned|double> et;
+    et.make(0,parent,child);
+      /*  or  */
+    et.make(parent,child);
+
+/*  Functions */
+
+    et.Traverse(2)        // traverses the tree with 2 as a start and stop point
+
+    et.Clean()            // cleans the treversed path (both dept and value)
+
+    et.GetDepthVec()      // returns the depth vector
+                          //    result for 2:      0 1 0 1 2 1 2 1 0 1 2 3 2 1 2 1 0
+    et.GetVertexIdVec()   // returns the set of vertices (vector)
+                          //    result for 2:      2 8 2 67 11 67 17 67 2 3 6 15 6 3 68 3 2
+
+
+
+CONSTRUCTION AND RUNTIME COMPLEXITY:
+
+For: 
+
+|p| - number of elements in parent vector
+|c| - number of elements in child vector 
+
+     Graph construction:                        O(|p|+|c|)
+     Euler circut computation:                  O(|p|+|c|)
+
+
+ACKNOWLEDGMENTS:
+
+     -
+
+
+AUTHOR:
+
+Robert Bakaric <rbakaric@irb.hr>, <bakaric@evolbio.mpg.de>
+
+COPYRIGHT AND LICENSE:
+
+ * Copyright 2015 Robert Bakaric
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+

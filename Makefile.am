@@ -1,0 +1,18 @@
+AUTOMAKE_OPTIONS = gnu
+
+SUBDIRS = src/apps/ 
+EXTRA_DIST = bin  src/include doc/EulerTour.pdf demo
+ 
+LDFLAGS_BOOST = \
+    $(BOOST_SYSTEM_LDFLAGS) \
+    $(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+
+LIBS_BOOST = \
+    $(BOOST_SYSTEM_LIBS) \
+    $(BOOST_PROGRAM_OPTIONS_LIBS) \
+    $(BOOST_FILESYSTEM_LIBS)
+
+AM_CPPFLAGS = -I$(top_srcdir)/src/include $(BOOST_CPPFLAGS)
+AM_LDFLAGS = $(LDFLAGS_BOOST)
+LIBS += $(LIBS_BOOST)
+

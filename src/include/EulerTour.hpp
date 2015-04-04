@@ -66,7 +66,6 @@ class Graph{
 
 /* Constructors */
 
-
 template <typename Tint>
 Graph<Tint>::Graph(const vector<Tint>& parent, const vector<Tint>& child){
   MakeGraph(parent, child);
@@ -112,7 +111,6 @@ class Euler : protected Graph<Tint>{
 /* Internal Functions */
   
   void DepthFirstTrav(const Tint vertex, Tint depth, Tint Flag);
-  void BrethFirstTrav();
   
   public:
   
@@ -222,7 +220,6 @@ void Euler<Tint>::Clean(){
 
 template <typename Tint>
 void Euler<Tint>::Traverse(Tint start){
-/* Depth first traversal only for now */
   DepthVec.push_back(0);
   VertexIdVec.push_back(start);
   DepthFirstTrav(start, 0,1);
@@ -230,13 +227,3 @@ void Euler<Tint>::Traverse(Tint start){
   VertexIdVec.push_back(start);
 }
 
-
-
-
-/* Functions to be added:
- *
- *  +  Breadth first traversal on acyclic graphs
- *
- *  +  Traversal on cyclic graphs 
- *        :  both "depth first" and "breadth first" 
- */

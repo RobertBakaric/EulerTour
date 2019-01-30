@@ -66,6 +66,7 @@ class Graph{
 
 /* Constructors */
 
+
 template <typename Tint>
 Graph<Tint>::Graph(const vector<Tint>& parent, const vector<Tint>& child){
   MakeGraph(parent, child);
@@ -110,7 +111,7 @@ class Euler : protected Graph<Tint>{
   
 /* Internal Functions */
   
-  void DepthFirstTrav(const Tint vertex, Tint depth, Tint Flag);
+  void DepthFirstTrav(const Tint vertex, Tint depth);
   
   public:
   
@@ -185,19 +186,18 @@ void Euler<Tint>::destroy(){
 /* Functions */
 
 template <typename Tint>
-void Euler<Tint>::DepthFirstTrav(const Tint vertex, Tint depth, Tint Flag){
+void Euler<Tint>::DepthFirstTrav(const Tint vertex, Tint depth){
   for(Tint i = 0;i< this->GraphMap[vertex].size();i++){ 
-    if(Flag == 0){
-      DepthVec.push_back(--depth);
-      VertexIdVec.push_back(vertex);
-    }
     DepthVec.push_back(++depth);
     VertexIdVec.push_back(this->GraphMap[vertex][i]);
-    Flag = 0;
     if(this->GraphMap.find(this->GraphMap[vertex][i]) != this->GraphMap.end()){
-      DepthFirstTrav(this->GraphMap[vertex][i], depth, 1);
+      DepthFirstTrav(this->GraphMap[vertex][i], depth);
       DepthVec.push_back(depth);
       VertexIdVec.push_back(this->GraphMap[vertex][i]);
+    }
+    if(this->GraphMap[vertex].size() > i+1){
+      DepthVec.push_back(--depth);
+      VertexIdVec.push_back(vertex);
     }
   }
 }
@@ -222,8 +222,9 @@ template <typename Tint>
 void Euler<Tint>::Traverse(Tint start){
   DepthVec.push_back(0);
   VertexIdVec.push_back(start);
-  DepthFirstTrav(start, 0,1);
+  DepthFirstTrav(start, 0);
   DepthVec.push_back(0);
   VertexIdVec.push_back(start);
 }
+
 

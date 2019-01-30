@@ -60,7 +60,7 @@ po::variables_map SetOptions(INT& argc, CHARA& argv){
 
     try {
         int opt;
-        string version = "1.0";
+        string version = "1.02";
         po::options_description desc("Allowed options");
         desc.add_options()
             ("help,h", "produce help message")

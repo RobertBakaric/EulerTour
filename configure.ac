@@ -1,5 +1,5 @@
 #Initialize AC: ACINIT(toolkit_name, version, bug_report_add)
-AC_INIT([EulerTour], [1.0])
+AC_INIT([EulerTour], [1.02])
 
 #Initialize Automake
 AC_PREREQ([2.68])
